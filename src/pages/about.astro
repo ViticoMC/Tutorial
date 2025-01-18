@@ -1,17 +1,79 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import "../styles/styles.css";
+
+
+var color = "red";
+   
+
+const title = "Sobre mi";
+
+const identity = {
+    firstName: "Sarah",
+    country: "Canada",
+    occupation: "Escritor técnico",
+    hobbies: ["fotografia", "observación de aves", "peñarol"],
+};
+
+const skills = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Astro",
+    "Redacción de documentos",
+];
+
 
 ---
 
-<Layout>
-	<body>
+<Layout title=`${title}`>
+    <body>
         <h1>My Astro Site</h1>
         <h1>About Me</h1>
         <h2>... and my new Astro site!</h2>
-      
-        <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-      
-        <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
-      </body>
+
+        <p>
+            I am working through Astro's introductory tutorial. This is the
+            second page on my website, and it's the first one I built myself!
+        </p>
+
+        <p>
+            This site will update as I complete more of the tutorial, so keep
+            checking back and see how my journey is going!
+        </p>
+
+        <p>He aquí algunos datos sobre mí:</p>
+        <ul>
+            <li>Me llamo {identity.firstName}.</li>
+            <li>
+                Vivo en {identity.country} y trabajo como {identity.occupation}.
+            </li>
+            {
+                identity.hobbies.length >= 2 && (
+                    <li>
+                        Dos de mis aficiones son: {identity.hobbies[0]} y{" "}
+                        {identity.hobbies[1]}
+                    </li>
+                )
+            }
+        </ul>
+        <p>Mis habilidades son:</p>
+        <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+    </body>
 </Layout>
+
+<style define:vars={{ color , fontWeight: "semibold", textCase: "uppercase" }}>
+    h1 {
+      color: rgb(237, 127, 237);
+      font-size: 4rem;
+    }
+    .skill {
+    color: var(--color);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+   
+  </style>

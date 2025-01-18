@@ -1,9 +1,13 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import "../styles/styles.css";
+
+const title = "Home";
+
 
 ---
 
-<Layout>
+<Layout title=`${title}`>
 	<Welcome />
 </Layout>

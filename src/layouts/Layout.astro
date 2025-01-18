@@ -1,3 +1,14 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro'
+import ClientRouter from 'astro/components/ClientRouter.astro';
+
+interface Props{
+	title:string;
+}
+---
+
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,12 +16,19 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{Astro.props.title}</title>
+		<ClientRouter />
 	</head>
 	<body>
-		<a href="/">Home</a>
-<a href="/about/">About</a>
+		<Header/>
+
 		<slot />
+		
+
+		  <Footer/>
+		  <script>
+			import "../scripts/hamburguer.js"
+		  </script>
 	</body>
 </html>
 
